@@ -1,9 +1,22 @@
 import React from "react";
 import Layout from "../components/layout";
+import styles from "../styles/grid.module.css";
+import Guitarra from "../components/guitarra";
 
 export default function Tienda({ guitarras }) {
-  console.log(guitarras);
-  return <Layout>tienda</Layout>;
+  return (
+    <Layout title={"Tienda de Guitarras"}>
+      <main className="contenedor">
+        <h1 className="heading">Nuestra Coleccion</h1>
+
+        <div className={styles.grid}>
+          {guitarras?.map((guitarra) => (
+            <Guitarra key={guitarra.id} guitarra={guitarra.attributes} />
+          ))}
+        </div>
+      </main>
+    </Layout>
+  );
 }
 
 export async function getStaticProps() {
